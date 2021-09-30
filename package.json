@@ -1,0 +1,27 @@
+{
+  "name": "voiceattack",
+  "version": "1.0.0",
+  "description": "Voiceattack with Twitch Intergration",
+  "main": "voiceattack.js",
+  "scripts": {
+    "start": "node voiceattack.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-bridges/voice-attack.git"
+  },
+  "keywords": [
+    "voiceattack",
+    "twitch",
+    "voice-attack"
+  ],
+  "author": "Seth Bridges",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s-bridges/voice-attack/issues"
+  },
+  "homepage": "https://github.com/s-bridges/voice-attack#readme",
+  "dependencies": {
+    "tmi.js": "^1.8.3"
+  }
+}
