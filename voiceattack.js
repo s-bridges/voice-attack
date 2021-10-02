@@ -6,28 +6,15 @@ const client = new tmi.Client({
     secure: true,
     reconnect: true
   },
-  // put in twitch username and oauth password
+
   identity: {
-    username: 'twitchUserName',
-    password: 'oauth:23012381029389012830912830'
+    username: process.env.TWITCH_USERNAME,
+    password: process.env.TWITCH_OAUTH
   },
-  // channels for bot to join and actively listen to
-  channels: ['jesterw00t']
+  channels: [process.env.TWITCH_CHANNEL]
 });
 
-var delay = ( function() {
-  var timer = 0;
-  return function(callback, ms) {
-      clearTimeout (timer);
-      timer = setTimeout(callback, ms);
-  };
-})();
-
 client.connect();
-delay(function(){
-  console.log("Delay occurred as programmed, continuing on with normal service.");
-}, 10000 );
-
 
 // copy and paste this to create additional voice responses
 client.on("chat", (channel, userstate, message, self) => {
@@ -35,12 +22,11 @@ client.on("chat", (channel, userstate, message, self) => {
   if(message == "hero") {
     // if you want bot to type in chat, use client.say(channel, "<message here>")
     var exec = require('child_process').exec;
-    exec(`cd C:\\Program Files\\VoiceAttack\\ && voiceattack.exe -command test"`, function (err, stdout, stderr) {
+    exec(`cd ${process.env.VOICE_ATTACK_PATH} && voiceattack.exe -command test"`, function (err, stdout, stderr) {
         if (err) {
             throw err;
         }
     })
   }
 })
-// ^^
 
